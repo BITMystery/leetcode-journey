@@ -18,3 +18,8 @@
 	
 344. Reverse String
 	列表切片双冒号用法表示隔位取，如s = '123456'，s[::2]输出'135'（隔一位取一个），s[::3]输出‘14’（隔两位取一个）。特殊用法::-1表示逆向取，即s[::-1]输出'654321'。
+	
+496. Next Greater Element I
+	考察stack的使用。	
+463. Island Perimeter
+	Nothing special.
