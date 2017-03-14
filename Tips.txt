@@ -7,19 +7,25 @@
 500. Keyboard Row.
 	集合运算符：交集&、并集|、差集-
 	
-419. Battleships in a Board
+419. Battleships in a Board.
 	Nothing special.
 	
-338. Counting Bits
+338. Counting Bits.
 	列表append()函数比赋值要慢，所以可以考虑先初始化列表，再赋值，而不是逐一append。
 	
 412. Fizz Buzz.
 	Nothing special.
 	
-344. Reverse String
+344. Reverse String.
 	列表切片双冒号用法表示隔位取，如s = '123456'，s[::2]输出'135'（隔一位取一个），s[::3]输出‘14’（隔两位取一个）。特殊用法::-1表示逆向取，即s[::-1]输出'654321'。
 	
-496. Next Greater Element I
-	考察stack的使用。	
-463. Island Perimeter
+496. Next Greater Element I.
+	考察stack的使用。
+	
+463. Island Perimeter.
 	Nothing special.
+	
+513. Find Bottom Left Tree Value
+	考察BFS。
+	使用列表实现队列，并且使用for循环一边遍历队列一边动态更新队列。
+	filter()用法：filter(func, list)返回一个新的list，其中每个元素作为输入func后均返回True。func可以自定义。特殊用法filter(None, list)：func为None时则逐一判断list中的元素本身是否为True，作用相当于去掉list中所有为false（或None）的元素。
