@@ -6,3 +6,9 @@
 
 500. Keyboard Row.
 	集合运算符：交集&、并集|、差集-
+	
+419. Battleships in a Board
+	Nothing special.
+	
+338. Counting Bits
+	列表append()函数比赋值要慢，所以可以考虑先初始化列表，再赋值，而不是逐一append。 
