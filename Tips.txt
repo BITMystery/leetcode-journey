@@ -25,7 +25,10 @@
 463. Island Perimeter.
 	Nothing special.
 	
-513. Find Bottom Left Tree Value
+513. Find Bottom Left Tree Value.
 	考察BFS。
 	使用列表实现队列，并且使用for循环一边遍历队列一边动态更新队列。
 	filter()用法：filter(func, list)返回一个新的list，其中每个元素作为输入func后均返回True。func可以自定义。特殊用法filter(None, list)：func为None时则逐一判断list中的元素本身是否为True，作用相当于去掉list中所有为false（或None）的元素。
+	
+520. Detect Capital.
+	使用字符串内置函数：isupper(), islower(), istitle().
