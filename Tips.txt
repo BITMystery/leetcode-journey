@@ -33,7 +33,17 @@
 520. Detect Capital.
 	使用字符串内置函数：isupper(), islower(), istitle().
 	
-383. Ransom Note
+383. Ransom Note.
 	使用collections.Counter()。collections.Counter(list)为list生成计数字典，如collections.Counter('abbbcc')输出Counter({'a':1, 'b':3, 'c':2})。Counter()计数字典支持+-运算，如collections.Counter('abbbcc') + collections.Counter('abcd') = Counter({'a':2, 'b':4, 'c':3, 'd':1}), collections.Counter('ab') + collections.Counter('aab') = Counter()。
 	因此，if not Counter(list1) - Counter(list) == Ture，则list1是list2的子列表。该用法可用于带计数的子集判断（区别于集合子集）。
 	若X不为0或者None，则not X返回True。在if语句中灵活使用not使代码更精简。
+	
+292. Nim Game.
+	Nothing special.
+	
+485. Max Consecutive Onces.
+	Nothing special.
+	
+448. Find All Numbers Disappeared in an Array.
+	取绝对值函数：abs().
+	range(n)会生成一个list，当n很大时会占用较大空间，而xrange(n)只是生成一个生成器。因此，尽量使用xrange(n).
