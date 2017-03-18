@@ -51,3 +51,6 @@
 406. Queue Reconstruction by Height.
 	考察Greedy算法。当需要处理多个元素，且元素之间相互影响时，可以考虑Greedy算法是否可行。如果按照特定顺序（如按元素从大到小）来处理不会影响正确性时，Greedy算法就是可行的。
 	sort()排序碰到多元素问题时，可以如下：list = [(2,3), (2,4), (4,5), (4,2)], list.sort(key = lambda x: (x[0], x[1])) 输出 [(2,3), (2,4), (4,2), (4,5)]，即先按第一个元素升序排序，再按第二个元素升序排序。若第二个元素要按降序排序，则list.sort(key = lambda x: (x[0], -x[1]))。list.sort()改变list的值，sorted(list)生成新的list（占用额外空间）。
+	
+413. Arithmetic Slices
+	Nothing special.
