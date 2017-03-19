@@ -54,3 +54,6 @@
 	
 413. Arithmetic Slices
 	Nothing special.
+
+136. Single Number.
+	Nothing special.
