@@ -44,7 +44,3 @@
 	
 384. Shuffle an Array.
 	复制一个列表A可以使用切片，B = A[:]。对列表A进行洗牌可以使用random模组，random.shuffle(A)。
-
-382. Linked List Random Node.使用
-382. Linked List Random Node.切片
-382. Linked List Random Node.
