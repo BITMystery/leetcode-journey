@@ -1,0 +1,57 @@
+# Definition for a binary tree node.
+class TreeNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
+
+class Solution(object):
+    def inorderTraversal(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        stack = []
+        res = []
+        node = root
+        if not node:
+        	return []
+        while True:
+        	if node.left:
+        		stack.append(node)
+        		node = node.left
+        	else:
+        		res.append(node.val)
+        		if node.right:
+        			node = node.right
+        		else:
+        			if not stack:
+        				break
+        			node = stack.pop()
+        			node.left = None
+        return res
+
+class Solution_2(object):
+    def inorderTraversal(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        #Solution#2 does not change the input tree
+        stack = []
+        res = []
+        node = root
+        while node or stack:
+        	while node:
+        		stack.append(node)
+        		node = node.left
+        	node = stack.pop()
+        	res.append(node.val)
+        	node = node.right
+        return res
+
+s = Solution_2()
+root = TreeNode(1)
+root.left = TreeNode(2)
+root.right = TreeNode(3)
+print s.inorderTraversal(root)        
