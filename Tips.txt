@@ -1,3 +1,5 @@
+I no long append new notes in this file. Instead, newly coming notes would be stored in leetcode.com.
+
 461. Hamming Distance.
 	异或运算符：^
 
