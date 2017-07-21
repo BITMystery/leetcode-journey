@@ -1,16 +1,16 @@
 class Solution(object):
-    def dfs(self, start, k, target, path, res):
-        if target < 0:
+    def dfs(self, k, n, start, path, res):
+        if n > 0 and len(path) == k:
             return # bad leaf
-        if target > 0:
-            if len(path) >= k:
-                return # bad leaf
-        if target == 0:
-            if len(path) == k:
-                res.append(path)
+        if n < 0:
+            return # bad leaf
+        if n == 0 and len(path) == k:
+            res.append(path) # good leaf
             return
         for i in xrange(start, 10):
-            self.dfs(i + 1, k, target - i, path + [i], res)
+            if i > n:
+                break
+            self.dfs(k, n - i, i + 1, path + [i], res)
             
     def combinationSum3(self, k, n):
         """
@@ -19,5 +19,5 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         res = []
-        self.dfs(1, k, n, [], res)
+        self.dfs(k, n, 1, [], res)
         return res
