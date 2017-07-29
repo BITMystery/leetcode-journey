@@ -1,40 +1,33 @@
 # Definition for a binary tree node.
-class TreeNode(object):
-    def __init__(self, x):
-        self.val = x
-        self.left = None
-        self.right = None
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+from collections import Counter
 
 class Solution(object):
-    index = {}
-    def postorderWalk(self, node):
-    	if not node:
-    		return 0
-    	left_sum = self.postorderWalk(node.left)
-    	right_sum = self.postorderWalk(node.right)
-    	node_sum = node.val + left_sum + right_sum
-    	node.val = node_sum
-    	self.index[node_sum] = self.index.get(node_sum, 0) + 1
-    	return node_sum
+    def helper(self, root, sums):
+        if None == root:
+            return 0
+        s = root.val
+        s += self.helper(root.left, sums) + self.helper(root.right, sums)
+        sums.append(s)
+        return s
+        
     def findFrequentTreeSum(self, root):
         """
         :type root: TreeNode
         :rtype: List[int]
         """
-        self.postorderWalk(root)
-        r = []
-        max_num = 0
-        for val in self.index:
-        	num = self.index[val]
-        	if num > max_num:
-        		r = [val]
-        		max_num = num
-        	elif num == max_num:
-        		r.append(val)
-        return r
-
-s = Solution()
-root = TreeNode(1)
-root.right = TreeNode(2)
-root.left = TreeNode(-3)
-print s.findFrequentTreeSum(root)
+        res = []
+        if None == root:
+            return []
+        sums = []
+        self.helper(root, sums)
+        c = Counter(sums)
+        max_freq = max([item[1] for item in c.items()])
+        for item in c.items():
+            if item[1] == max_freq:
+                res.append(item[0])
+        return res
