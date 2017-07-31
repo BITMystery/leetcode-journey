@@ -1,0 +1,27 @@
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    diameter = 0
+    def helper(self, root, index):
+        if not root:
+            return 0
+        self.helper(root.left, index)
+        self.helper(root.right, index)
+        index[root] = [max(index[root.left]) + 1, max(index[root.right]) + 1]
+        if sum(index[root]) - 2 > self.diameter:
+            self.diameter = sum(index[root]) - 2
+        
+    def diameterOfBinaryTree(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        index = {None: [0, 0]}
+        self.helper(root, index)
+        return self.diameter
+        
