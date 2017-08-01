@@ -7,21 +7,22 @@
 
 class Solution(object):
     diameter = 0
-    def helper(self, root, index):
+    
+    
+    def helper(self, root):
         if not root:
-            return 0
-        self.helper(root.left, index)
-        self.helper(root.right, index)
-        index[root] = [max(index[root.left]) + 1, max(index[root.right]) + 1]
-        if sum(index[root]) - 2 > self.diameter:
-            self.diameter = sum(index[root]) - 2
+            return 0, 0
+        l = max(self.helper(root.left))
+        r = max(self.helper(root.right))
+        d = l + r
+        self.diameter = max(self.diameter, d)
+        return 1 + l, 1 + r
+        
         
     def diameterOfBinaryTree(self, root):
         """
         :type root: TreeNode
         :rtype: int
         """
-        index = {None: [0, 0]}
-        self.helper(root, index)
+        self.helper(root)
         return self.diameter
-        
