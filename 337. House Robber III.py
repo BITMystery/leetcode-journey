@@ -6,22 +6,19 @@
 #         self.right = None
 
 class Solution(object):
-    index = {None: 0}
+    def helper(self, root):
+        if not root:
+            return 0, 0
+        rob_left, not_rob_left = self.helper(root.left)
+        rob_right, not_rob_right = self.helper(root.right)
+        rob_root = root.val + not_rob_left + not_rob_right
+        not_rob_root = max(rob_left, not_rob_left) + max(rob_right, not_rob_right)
+        return rob_root, not_rob_root
+        
+        
     def rob(self, root):
         """
         :type root: TreeNode
         :rtype: int
         """
-        if not root:
-            return 0
-        if not root.left and not root.right:
-            self.index[root] = root.val
-            return root.val
-        res1 = self.rob(root.left) + self.rob(root.right)
-        res2 = root.val
-        if root.left:
-            res2 += self.index[root.left.left] + self.index[root.left.right]
-        if root.right:
-            res2 += self.index[root.right.left] + self.index[root.right.right]
-        self.index[root] = max(res1, res2)
-        return max(res1, res2)
+        return max(self.helper(root))
