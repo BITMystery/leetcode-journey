@@ -6,21 +6,22 @@
 #         self.right = None
 
 class Solution(object):
-    visited = 0
-    value = 0
     def kthSmallest(self, root, k):
         """
         :type root: TreeNode
         :type k: int
         :rtype: int
         """
-        if not root:
-            return
-        if k == self.visited:
-            return
-        self.kthSmallest(root.left, k)
-        self.visited += 1
-        if k == self.visited:
-            self.value = root.val
-        self.kthSmallest(root.right, k)
-        return self.value
+        res = 0
+        stack = []
+        while root:
+            stack.append(root)
+            root = root.left
+        for _ in xrange(k):
+            node = stack.pop()
+            res = node.val
+            node = node.right
+            while node:
+                stack.append(node)
+                node = node.left
+        return res
