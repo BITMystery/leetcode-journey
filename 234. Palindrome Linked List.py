@@ -10,27 +10,23 @@ class Solution(object):
         :type head: ListNode
         :rtype: bool
         """
-        if not head:
+        if not head or not head.next:
             return True
-        l = 0
-        node = head
-        while node:
-            node = node.next
-            l += 1
-        node = head
-        for i in xrange((l + 1) / 2):
-            node = node.next
+        slow = head
+        fast = head.next
+        mid = slow.next
         prev = None
-        cur = node
-        while cur:
-            nxt = cur.next
-            cur.next = prev
-            prev = cur
-            cur = nxt
-        left, right = head, prev
-        while right:
-            if left.val != right.val:
+        while fast and fast.next:
+            slow.next = prev
+            prev = slow
+            slow = mid
+            mid = mid.next
+            fast = fast.next.next
+        slow.next = prev
+        if not fast:
+            slow = slow.next
+        while slow:
+            if slow.val != mid.val:
                 return False
-            left = left.next
-            right = right.next
+            slow, mid = slow.next, mid.next
         return True
