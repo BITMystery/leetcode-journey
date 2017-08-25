@@ -12,14 +12,10 @@ class Solution(object):
         """
         if not head:
             return None
-        cur = head
-        res = head.next
-        while cur and cur.next:
-            tmp = cur.next.next
-            cur.next.next = cur
-            if tmp:
-                cur.next = tmp if not tmp.next else tmp.next
-            else:
-                cur.next = None
-            cur = tmp
-        return res if res else head
+        if not head.next:
+            return head
+        node = head.next.next
+        head.next.next = head
+        head = head.next
+        head.next.next = self.swapPairs(node)
+        return head
