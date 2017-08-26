@@ -11,18 +11,16 @@ class Solution(object):
         :type k: int
         :rtype: ListNode
         """
-        if not head:
-            return None
         node = head
         for _ in xrange(k):
             if not node:
                 return head
             node = node.next
-        cur, new_head = head, head
+        cur = head
         for _ in xrange(k - 1):
             nxt = cur.next
             cur.next = nxt.next
-            nxt.next = new_head
-            new_head = nxt
+            nxt.next = head
+            head = nxt
         cur.next = self.reverseKGroup(cur.next, k)
-        return new_head
+        return head
