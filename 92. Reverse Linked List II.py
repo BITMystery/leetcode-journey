@@ -12,17 +12,15 @@ class Solution(object):
         :type n: int
         :rtype: ListNode
         """
-        curr = dummy = ListNode(0)
+        left_tail = dummy = ListNode(0)
         dummy.next = head
         for _ in xrange(m - 1):
-            curr = curr.next
-        node1, node2 = curr, curr.next
-        curr, prev = node2.next, node2
+            left_tail = left_tail.next
+        cur = right_head = left_tail.next
         for _ in xrange(n - m):
-            nxt = curr.next
-            curr.next = prev
-            prev = curr
-            curr = nxt
-        node1.next = prev
-        node2.next = curr
+            nxt = cur.next
+            cur.next = nxt.next
+            nxt.next = right_head
+            right_head = nxt
+        left_tail.next = right_head
         return dummy.next
