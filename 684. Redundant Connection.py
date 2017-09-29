@@ -5,11 +5,11 @@ class Solution(object):
         :rtype: List[int]
         """
         n = len(edges)
-        mark = ''.join(map(unichr, range(n + 1)))
+        union_mark = ''.join(map(unichr, range(n + 1)))
         for u, v in edges:
-            if mark[u] == mark[v]:
+            if union_mark[u] == union_mark[v]:
                 return [u, v]
-            new_mark = mark.replace(mark[u], mark[v])
-            del mark
-            mark = new_mark
+            new_union_mark = union_mark.replace(union_mark[u], union_mark[v])
+            del union_mark
+            union_mark = new_union_mark
         return None
